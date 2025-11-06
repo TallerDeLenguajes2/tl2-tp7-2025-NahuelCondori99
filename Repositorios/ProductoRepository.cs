@@ -77,7 +77,7 @@ public class ProductoRepository
         using (SqliteConnection conexion = new SqliteConnection(cadenaDeConexion))
         {
             conexion.Open();
-            string sql = "UPDATE Productos SET descripcion = @descripcion, precio = @precio";
+            string sql = "UPDATE Productos SET descripcion = @descripcion, precio = @precio WHERE idProducto = @id";
             using (SqliteCommand comando = new SqliteCommand(sql, conexion))
             {
                 comando.Parameters.AddWithValue("@descripcion", p.Descripcion);
