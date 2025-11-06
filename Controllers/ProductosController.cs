@@ -21,9 +21,39 @@ public class ProductosController : ControllerBase
         if (actualizado)
         {
             return Ok("Producto actualizado correctamente");
-        }else
+        }
+        else
         {
             return NotFound("No se encontro el producto para actualizar");
         }
+    }
+
+    [HttpGet]
+    public IActionResult ObtenerProductos()
+    {
+        var lista = _repository.GetAll();
+        return Ok(lista);
+    }
+
+    [HttpGet("id")]
+    public IActionResult ObtenerProductoID(int id)
+    {
+        var producto = _repository.GetById(id);
+        if (producto != null)
+        {
+            return Ok(producto);
+        }
+        return NotFound("Producto no encontrado");
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult EliminarProducto(int id)
+    {
+        bool eliminado = _repository.Eliminar(id);
+        if (eliminado)
+        {
+            return Ok("Producto eliminado correctamente");
+        }
+        return NotFound("No se encontro el producto para eliminar");
     }
 }

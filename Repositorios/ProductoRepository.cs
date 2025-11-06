@@ -45,7 +45,7 @@ public class ProductoRepository
                     {
                         p = new Productos
                         (
-                            Convert.ToInt32(lector["idProductos"]),
+                            Convert.ToInt32(lector["idProducto"]),
                             lector["descripcion"].ToString(),
                             Convert.ToInt32(lector["precio"])
                         );
