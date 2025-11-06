@@ -10,7 +10,7 @@ public class PresupuestosRepository
         using (var conexion = new SqliteConnection(cadenaDeConexion))
         {
             conexion.Open();
-            string sql = "SELECT * FROM Presupuestos (nombreDestinatario, fechaCreacion) VALUES ($nombre, $fecha);";
+            string sql = "INSERT INTO Presupuestos (nombreDestinatario, fechaCreacion) VALUES (@nombre, @fecha);";
 
             using (SqliteCommand comando = new SqliteCommand(sql, conexion))
             {
